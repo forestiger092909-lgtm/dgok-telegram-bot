@@ -57,7 +57,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Запуск
 import os
-ApplicationBuilder().token(os.getenv("8309598474:AAHNpHhN8s3nVphRPnmSQLA0H6oDhI8uPGQ")).build()
+ApplicationBuilder().token(os.getenv("8309598474:AAGNE8sGiE897FeZ73u6rT37d9I7-OoF5h4")).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
@@ -65,5 +65,6 @@ print("Бот запущен и ждёт сообщений...")
 app.run_polling()
 
 # redeploy trigger
+
 
 
