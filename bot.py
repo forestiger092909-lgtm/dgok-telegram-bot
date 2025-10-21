@@ -3,7 +3,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 
 # Главное меню
 main_menu = ReplyKeyboardMarkup(
-    [['📄 Информация', '📞 Контакты'], ['💡 Совет']],
+    [['📄 Информация', '📞 Контакты'], ['💡 Совет', '🎥 День качества']],
     resize_keyboard=True
 )
 
@@ -49,6 +49,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Скоро здесь появятся новые документы!"
         )
 
+    elif text == '🎥 День качества':
+        await update.message.reply_text("🎥 Видео по Дню качества:")
+        await update.message.reply_video(
+            video=open("videos/demo.mp4", "rb"),
+            supports_streaming=True,
+            caption="Посмотрите короткое видео о Дне качества на ДГОК 📽️"
+        )
+
     elif text == '🔙 Назад':
         await update.message.reply_text("Вы вернулись в главное меню:", reply_markup=main_menu)
 
@@ -56,13 +64,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Выберите одну из кнопок ниже.", reply_markup=main_menu)
 
 # Запуск
-from telegram import Update, ReplyKeyboardMarkup
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
-
-# Создание приложения с токеном напрямую
 app = ApplicationBuilder().token("8309598474:AAGNE8sGiE897FeZ73u6rT37d9I7-OoF5h4").build()
-
-# Обработчики
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
@@ -70,3 +72,4 @@ print("Бот запущен и ждёт сообщений...")
 app.run_polling()
 
 # redeploy trigger
+
