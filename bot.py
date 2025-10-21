@@ -56,7 +56,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Выберите одну из кнопок ниже.", reply_markup=main_menu)
 
 # Запуск
-app = ApplicationBuilder().token("8309598474:AAHNpHhN8s3nVphRPnmSQLA0H6oDhI8uPGQ").build()
+import os
+ApplicationBuilder().token(os.getenv("8309598474:AAHNpHhN8s3nVphRPnmSQLA0H6oDhI8uPGQ")).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
@@ -64,4 +65,5 @@ print("Бот запущен и ждёт сообщений...")
 app.run_polling()
 
 # redeploy trigger
+
 
