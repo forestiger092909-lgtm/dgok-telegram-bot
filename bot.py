@@ -49,13 +49,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Скоро здесь появятся новые документы!"
         )
 
-elif text == '🎥 День качества':
-    await update.message.reply_text("🎥 Видео по Дню качества:")
-    await update.message.reply_video(
-        video=open("videos/Kakdostato.mp4", "rb"),
-        supports_streaming=True,
-        caption="Посмотрите короткое видео о Дне качества на ДГОК 📽️"
-    )
+    elif text == '🎥 День качества':
+        await update.message.reply_text("🎥 Видео по Дню качества:")
+        await update.message.reply_video(
+            video=open("videos/Kachestvo.mp4", "rb"),
+            supports_streaming=True,
+            caption="Посмотрите короткое видео о Дне качества на ДГОК 📽️"
+        )
 
     elif text == '🔙 Назад':
         await update.message.reply_text("Вы вернулись в главное меню:", reply_markup=main_menu)
@@ -72,5 +72,7 @@ print("Бот запущен и ждёт сообщений...")
 app.run_polling()
 
 # redeploy trigger
+
+
 
 
