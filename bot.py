@@ -56,8 +56,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Выберите одну из кнопок ниже.", reply_markup=main_menu)
 
 # Запуск
-import os
-ApplicationBuilder().token(os.getenv("8309598474:AAGNE8sGiE897FeZ73u6rT37d9I7-OoF5h4")).build()
+from telegram import Update, ReplyKeyboardMarkup
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
+
+# Создание приложения с токеном напрямую
+app = ApplicationBuilder().token("8309598474:AAGNE8sGiE897FeZ73u6rT37d9I7-OoF5h4").build()
+
+# Обработчики
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
@@ -65,7 +70,3 @@ print("Бот запущен и ждёт сообщений...")
 app.run_polling()
 
 # redeploy trigger
-
-
-
-
